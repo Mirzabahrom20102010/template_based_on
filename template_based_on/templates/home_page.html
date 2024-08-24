@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bosh Sahifa</title>
+</head>
+<body>
+<ul class="spost_nav">
+    <h1>Main Page</h1>
+
+    <h2>New Posts</h2>
+    <ul>
+        {% for post in last_posts %}
+        <li><a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Most popular posts</h2>
+    <ul>
+        {% for post in popular_posts %}
+        <li><a href="{% url 'posts:post-detail' post.id %}">{{ post.title }} ({{ post.views }} ko'rildi)</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Most popular posts of the week</h2>
+    <ul>
+        {% for post in week_posts %}
+        <li><a href="{% url 'posts:post-detail' post.id %}">{{ post.title }} ({{ post.views }} ko'rildi)</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Most popular posts of the month</h2>
+    <ul>
+        {% for post in month_posts %}
+        <li><a href="{% url 'posts:post-detail' post.id %}">{{ post.title }} ({{ post.views }} ko'rildi)</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Recomended posts</h2>
+    <ul>
+        {% for post in recommended_posts %}
+        <li><a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</ul>
+</body>
+</html>
+
+{% endblock content %}

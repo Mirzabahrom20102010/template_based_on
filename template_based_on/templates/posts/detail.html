@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+    <h1>Detail</h1>
+    <div class="row mb-4">
+        <div class="col-2">
+            <img class="cover-pic" src="{{ post.picture.url }}" alt="">
+        </div>
+        <div class="col-6 ms-3">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.body }}</p>
+            <p>Views: {{ post.views }}</p>
+        </div>
+    </div>
+
+<div class="card-footer text-center">
+    <h3>Jami izohlar soni {{ comment_count }} ta</h3>
+    {% for comment in comments %}
+    <div class="comments" style="padding: 10px">
+        <p class="font-weight-bold">
+            {{ comment.user.username }}
+            <span class="text-muted font-weight-normal">
+                {{ comment.created_time }}
+            </span>
+        </p>
+        {{ comment.body | linebreaks }}
+    </div>
+    {% endfor %}
+    <!--     </form>-->
+    {% if user.is_authenticated %}
+    <div class="col-md-8 card mb-4 mt-3">
+        <div class="card-body">
+            <h3>Izoh qoldirish</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="btn btn-primary btn-lg">
+                    Yuborish
+                </button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="card-body">
+        <p class="text-danger">Faqatgina ro'yhatdan o'tgan foydalanuvchilar izoh qoldirishi mumkin</p>
+        <p>Izoh qoldirish uchun
+        </p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
+{% endblock content %}

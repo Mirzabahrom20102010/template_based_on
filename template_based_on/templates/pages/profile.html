@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Profile page {% endblock %}
+
+{% block content %}
+
+<!--<h1>Profile</h1>-->
+<!--<div class="container posts-content">-->
+<!--    <div class="row">-->
+<!--        <div class="col-lg-6">-->
+<!--            <div class="card mb-4">-->
+<!--              <div class="card-body">-->
+<!--                <div class="media mb-3">-->
+<!--                    <img class="profile-pic" src="{{ user.profile_picture.url }}">-->
+<!--                    <div class="media-body ml-3"><br>-->
+<!--                        -->
+<!--                    <p class="center">Username: {{ user.username }}</p> <br>-->
+<!--                    <p class="center">First name: {{ user.first_name }}</p><br>-->
+<!--                    <p class="center">Last name: {{ user.last_name }}</p><br>-->
+<!--                    <p class="center">Email: {{ user.email }}</p><br>-->
+<!--                    <div class="text-muted small center">Joined: {{ user.date_joined|date:"d-M Y | h:m:s" }}</div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container posts-content">
+    <div class="row">
+        <div class="col-lg-6 center">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media mb-3">
+                        <a href="javascript:void(0)" class="ui-rect ui-bg-cover" style="background-image: url('{{ user.profile_picture.url }}');"></a>
+                        <div class="media-body ml-3">
+                            {% if user.is_authenticated %}
+                            Username: {{ user.username }} <br>
+                            First name: {{ user.first_name }} <br>
+                            Last name: {{ user.last_name }} <br>
+                            Email: {{ user.email }} <br>
+                            <div class="text-muted small">Joined: {{ user.date_joined|date:"d-M Y | h:m:s" }}</div> <br>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

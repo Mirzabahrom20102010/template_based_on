@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Muvaffaqiyatli ro'yhatdan o'tdingiz {% endblock title %}
+
+{% block content %}
+<h1>
+    {{ new_user.first_name }}, tabriklaymiz ro'yhatdan o'tdingiz
+</h1>
+
+    <p> Ro'yhatdan o'tish uchun quyidagi formani to'ldiring:</p>
+    <p> Endi saytga <a href="{% url 'accounts:login_page' %}" style="color:purple">login</a> qilishingiz mumkin</p>
+{% endblock content %}

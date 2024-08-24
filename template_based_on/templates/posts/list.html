@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post List</title>
+</head>
+<body>
+<h1>Post List</h1>
+<ul class="spost_nav">
+  <li>
+      {% for post in all_posts %}
+      <div class="media wow fadeInDown"><a href="{% url 'posts:post-detail' post.id %}"> <img alt="" src="{{ post.picture.url }}"></a>
+          <div class="media-body"><a href="{% url 'posts:post-detail' post.id %}"> {{ post.title | truncatewords:10 }}</a></div>
+          <div class="media-body">{{ post.body | truncatewords:10 }}</div> <p>Views: {{ post.views }}</p> <br>
+      </div>
+      {% endfor %}
+  </li>
+</ul>
+</body>
+</html>
+
+{% endblock content %}

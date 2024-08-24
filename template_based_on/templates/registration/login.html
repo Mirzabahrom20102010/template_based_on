@@ -1,0 +1,15 @@
+{% block content %}
+
+<h1>Login</h1>
+<form method="post" action="" >{% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Log in</button> <br><br>
+
+    <p>Akkauntiz yo'qmi, hozir yarating
+        <a type="button" class="btn btn-outline-info" href="{% url 'accounts:user_register' %}">
+            register
+        </a>
+    </p>
+</form>
+{% endblock content %}
